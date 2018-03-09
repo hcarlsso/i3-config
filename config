@@ -160,7 +160,17 @@ bar {
 
 # Multiple monitors
 exec --no-startup-id xrandr --output eDP1 --auto --output VGA1 --auto --pos 1600x0 --output DP1 --auto --pos 3520x0
+workspace 1 output eDP1
+workspace 2 output VGA1
+workspace 3 output DP1
 
+# Start dropbox, fix login?
+exec --no-startup-id exec ~/.dropbox-dist/dropboxd
+# exec --no-startup-id dropbox start
+
+# Autostart 
+exec --no-startup-id google-chrome https://play.google.com/music/listen
+exec --no-startup-id emacs
 
 # Keyboard layout
 # exec --no-startup-id setxkbmap -layout us,se
