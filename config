@@ -154,7 +154,8 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status -c ~/.i3/i3status.conf
+    status_command ~/.i3/i3blocks/i3blocks -c ~/.i3/i3blocks.conf
+# status_command i3status -c ~/.i3/i3status.conf
 }
 
 
@@ -178,15 +179,16 @@ exec --no-startup-id emacs
 
 bindsym Ctrl+Shift+1 exec --no-startup-id setxkbmap us
 bindsym Ctrl+Shift+2 exec --no-startup-id setxkbmap se
-bindsym Ctrl+Shift+3 exec --no-startup-id sleep 1 && xset dpms force suspend
+bindsym Ctrl+Shift+3 exec --no-startup-id setxkbmap gr
+bindsym $mod+Shift+s exec --no-startup-id sleep 1 && xset dpms force suspend
 
 # Pulse Audio controls
 # Can run a more fancy command, to automatically choose correct sink
 # set $sink `pactl list short sinks | grep RUNNING | cut -f1`
 set $sink 1
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink -- +10% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -- -10% #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink +10% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -10% #decrease sound volume
 # Fine tune volume
-bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink -- +1% #increase sound volume
-bindsym $mod+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -- -1% #decrease sound volume
+bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink +1% #increase sound volume
+bindsym $mod+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -1% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $sink toggle # mute sound
