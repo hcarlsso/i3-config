@@ -180,7 +180,11 @@ exec --no-startup-id emacs
 bindsym Ctrl+Shift+1 exec --no-startup-id setxkbmap us
 bindsym Ctrl+Shift+2 exec --no-startup-id setxkbmap se
 bindsym Ctrl+Shift+3 exec --no-startup-id setxkbmap gr
+
+# Screens
 bindsym $mod+Shift+s exec --no-startup-id sleep 1 && xset dpms force suspend
+bindsym $mod+Ctrl+Shift+1 exec --no-startup-id xrandr --output eDP1 --auto --output VGA1 --auto --pos 1600x0 --output DP1 --auto --pos 3520x0
+bindsym $mod+Ctrl+Shift+2 exec --no-startup-id xrandr --output eDP1 --auto --output VGA1 --off --output DP1 --off
 
 # Pulse Audio controls
 # Can run a more fancy command, to automatically choose correct sink
