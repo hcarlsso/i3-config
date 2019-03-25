@@ -101,6 +101,9 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+bindsym $mod+Control+Next workspace prev
+bindsym $mod+Control+Prior workspace next
+
 # move the whole workspace to the next output
 bindsym $mod+Control+Left move workspace to output left
 bindsym $mod+Control+Right move workspace to output right
@@ -165,9 +168,6 @@ bar {
 # workspace 2 output VGA1
 # workspace 3 output DP1
 
-# Multiple monitors
-exec --no-startup-id xrandr --output eDP1 --off --output VGA1 --off --output DP1 --auto
-workspace 1 output DP1
 
 
 ############################# Autostart #######################################
@@ -180,7 +180,7 @@ exec --no-startup-id google-chrome https://play.google.com/music/listen
 exec --no-startup-id emacs
 
 # New background
-exec --no-startup-id sh ~/.fehbg
+exec --no-startup-id feh --bg-scale '/home/hakcar/Pictures/abstract-background-bright-207130.jpg' 
 
 
 
@@ -196,11 +196,12 @@ bindsym Ctrl+Shift+3 exec --no-startup-id setxkbmap gr
 # eDP1 laptop screen
 # 
 bindsym $mod+Shift+s exec --no-startup-id sleep 1 && xset dpms force suspend
-bindsym $mod+Ctrl+Shift+1 exec --no-startup-id xrandr --output eDP1 --auto --output VGA1 --auto --pos 1600x0 --output DP1 --auto --pos 3520x0
-bindsym $mod+Ctrl+Shift+2 exec --no-startup-id xrandr --output eDP1 --auto --output VGA1 --off --output DP1 --off
-bindsym $mod+Ctrl+Shift+3 exec --no-startup-id xrandr --output eDP1 --off  --output VGA1 --auto --output DP1 --off
-bindsym $mod+Ctrl+Shift+4 exec --no-startup-id xrandr --output eDP1 --off  --output VGA1 --off --output DP1 --auto
-bindsym $mod+Ctrl+Shift+5 exec --no-startup-id xrandr --output eDP1 --auto  --output VGA1 --off --output DP1 --auto --rotate left  # --pos -1080x0
+
+# eDP1 - screen laptop
+# DP1 - external HDMI screen
+bindsym $mod+Ctrl+Shift+1 exec --no-startup-id xrandr --output eDP1 --auto --output DP1 --off
+bindsym $mod+Ctrl+Shift+2 exec --no-startup-id xrandr --output eDP1 --auto --output DP1 --auto --pos 1600x0
+bindsym $mod+Ctrl+Shift+3 exec --no-startup-id xrandr --output eDP1 --off  --output DP1 --auto
 
 # Pulse Audio controls
 # Can run a more fancy command, to automatically choose correct sink
