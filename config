@@ -176,12 +176,14 @@ exec --no-startup-id exec ~/.dropbox-dist/dropboxd
 # exec --no-startup-id dropbox start
 
 
-exec --no-startup-id google-chrome https://play.google.com/music/listen
+# exec --no-startup-id google-chrome https://play.google.com/music/listen
 exec --no-startup-id emacs
 
 # New background
 exec --no-startup-id feh --bg-scale '/home/hakcar/Pictures/abstract-background-bright-207130.jpg' 
 
+# Login wired KTH
+exec --no-startup-id bash /home/hakcar/kth_login.sh
 
 
 ###############################################################################
@@ -213,3 +215,9 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -1
 bindsym $mod+XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink +1% #increase sound volume
 bindsym $mod+XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -1% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute $sink toggle # mute sound
+
+# screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10 # decrease screen brightness
+bindsym $mod+XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 1 # increase screen brightness
+bindsym $mod+XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 1 # decrease screen brightness
