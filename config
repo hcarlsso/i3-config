@@ -89,7 +89,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-# switch to workspace
+# switch to workspace 1-10
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -101,6 +101,18 @@ bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
+# workspaces from 11-20
+bindsym $mod+Control+1 workspace 11
+bindsym $mod+Control+2 workspace 12
+bindsym $mod+Control+3 workspace 13
+bindsym $mod+Control+4 workspace 14
+bindsym $mod+Control+5 workspace 15
+bindsym $mod+Control+6 workspace 16
+bindsym $mod+Control+7 workspace 17
+bindsym $mod+Control+8 workspace 18
+bindsym $mod+Control+9 workspace 19
+bindsym $mod+Control+0 workspace 20
+
 bindsym $mod+Control+Next workspace prev
 bindsym $mod+Control+Prior workspace next
 
@@ -109,7 +121,7 @@ bindsym $mod+Control+Left move workspace to output left
 bindsym $mod+Control+Right move workspace to output right
 
 
-# move focused container to workspace
+# move focused container to workspace 1-10
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
 bindsym $mod+Shift+3 move container to workspace 3
@@ -120,6 +132,18 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+
+# 11-20
+bindsym $mod+Control+Shift+1 move container to workspace 11
+bindsym $mod+Control+Shift+2 move container to workspace 12
+bindsym $mod+Control+Shift+3 move container to workspace 13
+bindsym $mod+Control+Shift+4 move container to workspace 14
+bindsym $mod+Control+Shift+5 move container to workspace 15
+bindsym $mod+Control+Shift+6 move container to workspace 16
+bindsym $mod+Control+Shift+7 move container to workspace 17
+bindsym $mod+Control+Shift+8 move container to workspace 18
+bindsym $mod+Control+Shift+9 move container to workspace 19
+bindsym $mod+Control+Shift+0 move container to workspace 20
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -172,15 +196,15 @@ bar {
 
 ############################# Autostart #######################################
 # Start dropbox, fix login?
-exec --no-startup-id exec ~/.dropbox-dist/dropboxd
-# exec --no-startup-id dropbox start
+exec --no-startup-id ~/.dropbox-dist/dropboxd
+exec --no-startup-id dropbox start
 
 
 # exec --no-startup-id google-chrome https://play.google.com/music/listen
 exec --no-startup-id emacs
 
 # New background
-exec --no-startup-id feh --bg-scale '/home/hakcar/Pictures/abstract-background-bright-207130.jpg' 
+# exec --no-startup-id feh --bg-scale '/home/hakcar/Pictures/abstract-background-bright-207130.jpg' 
 
 # Login wired KTH
 exec --no-startup-id bash /home/hakcar/kth_login.sh
@@ -201,14 +225,16 @@ bindsym $mod+Shift+s exec --no-startup-id sleep 1 && xset dpms force suspend
 
 # eDP1 - screen laptop
 # DP1 - external HDMI screen
-bindsym $mod+Ctrl+Shift+1 exec --no-startup-id xrandr --output eDP1 --auto --output DP1 --off
-bindsym $mod+Ctrl+Shift+2 exec --no-startup-id xrandr --output eDP1 --auto --output DP1 --auto --pos 1600x0
-bindsym $mod+Ctrl+Shift+3 exec --no-startup-id xrandr --output eDP1 --off  --output DP1 --auto
+# Mod1 <==> Alt 
+bindsym $mod+Mod1+1 exec --no-startup-id xrandr --output eDP1 --auto --output DP1 --off
+bindsym $mod+Mod1+2 exec --no-startup-id xrandr --output eDP1 --auto --output DP1 --auto --pos 1600x0
+bindsym $mod+Mod1+3 exec --no-startup-id xrandr --output eDP1 --off  --output DP1 --auto
+bindsym $mod+Mod1+4 exec --no-startup-id xrandr --output eDP1 --off  --output HDMI1 --auto # HDMI port on computer
 
 # Pulse Audio controls
 # Can run a more fancy command, to automatically choose correct sink
 # set $sink `pactl list short sinks | grep RUNNING | cut -f1`
-set $sink 1
+set $sink 0
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink +10% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -10% #decrease sound volume
 # Fine tune volume
